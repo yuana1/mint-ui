@@ -10,6 +10,7 @@
             class="mint-radio-input"
             type="radio"
             v-model="currentValue"
+            :name="radioName"
             :disabled="option.disabled"
             :value="option.value || option">
           <span class="mint-radio-core"></span>
@@ -53,7 +54,8 @@ export default {
 
   data() {
     return {
-      currentValue: this.value
+      currentValue: this.value,
+      radioName: parseInt(Math.random() * 100 + 1, 10) + 'radioName'
     };
   },
 
