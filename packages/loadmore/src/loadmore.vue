@@ -329,8 +329,10 @@
         this.$emit('translate-change', this.translate);
       },
 
-      handleTouchEnd() {
+      handleTouchEnd(event) {
         if (this.direction === 'down' && this.getScrollTop(this.scrollEventTarget) === 0 && this.translate > 0) {
+          event.preventDefault();
+          event.stopPropagation();
           this.topDropped = true;
           if (this.topStatus === 'drop') {
             this.translate = '50';
@@ -342,6 +344,8 @@
           }
         }
         if (this.direction === 'up' && this.bottomReached && this.translate < 0) {
+          event.preventDefault();
+          event.stopPropagation();
           this.bottomDropped = true;
           this.bottomReached = false;
           if (this.bottomStatus === 'drop') {
